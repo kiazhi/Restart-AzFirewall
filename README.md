@@ -1,10 +1,16 @@
 # Restart-AzFirewall
-A simple PowerShell cmdlet module to reboot azFirewall (PaaS)
+
+A simple PowerShell cmdlet module to reboot Azure Firewall (PaaS).
+
+## Pre-requisite
+
+1. PowerShell
+2. Azure PowerShell Module
 
 ## How-To
 
 1. Clone the repository
-2. Import the Restart-azFirewall module
+2. Import the Restart-AzFirewall module
 
 	```powershell
 	cd src
