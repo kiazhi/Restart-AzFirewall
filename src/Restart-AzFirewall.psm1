@@ -14,6 +14,9 @@
  .Parameter ResourceGroupName
   Specifies the name of a resource group to contain the Firewall.
 
+ .Parameter Wait
+  Specifies the number of seconds to wait before starting the Firewall.
+
  .Example
   # Restart the Azure Firewall.
   Restart-AzFirewall -Name "myAzureFirewall" -ResourceGroupName "myResourceGroup"
@@ -21,6 +24,10 @@
  .Example
   # Restart the Azure Firewall with Verbose outputs.
   Restart-AzFirewall -Name "myAzureFirewall" -ResourceGroupName "myResourceGroup" -Verbose
+
+ .Example
+  # Restart the Azure Firewall and wait for 30 seconds duration with Verbose outputs.
+  Restart-AzFirewall -Name "myAzureFirewall" -ResourceGroupName "myResourceGroup" -Wait 30 -Verbose
 
  .INPUTS
  	System.String
@@ -43,7 +50,10 @@ function Restart-AzFirewall {
 		[String] $Name,
 
 		[Parameter(Mandatory)]
-		[String] $ResourceGroupName
+		[String] $ResourceGroupName,
+
+		[Parameter(Mandatory)]
+		[Int] $Wait
 	)
 
 	begin {}
@@ -111,6 +121,21 @@ function Restart-AzFirewall {
 		if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
 				Write-Verbose -Message $("$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzzz') - " `
 					+ "Stopped azFirewall")
+		}
+
+		if($Wait) {
+
+			if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
+				Write-Verbose -Message $("$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzzz') - " `
+					+ "Start waiting for $Wait seconds")
+			}
+
+			Start-Sleep -Seconds $Wait
+
+			if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
+				Write-Verbose -Message $("$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzzz') - " `
+					+ "End waiting")
+			}
 		}
 
 		$VirtualNetwork = Get-AzVirtualNetwork `
