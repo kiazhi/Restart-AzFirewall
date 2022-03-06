@@ -73,9 +73,8 @@ function Restart-AzFirewall {
 			-Name $Name `
 			-ResourceGroupName $ResourceGroupName
 
-		$ExistingPublicIpAddressName = (Get-AzResource -ResourceId (((Get-AzFirewall `
-			-Name $Name `
-			-ResourceGroupName $ResourceGroupName).IpConfigurations).PublicIpAddress).Id).Name
+		$ExistingPublicIpAddressName = (Get-AzResource `
+      -ResourceId $AzFirewall.IpConfigurations.PublicIpAddress.Id).Name
 
 		if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
 				Write-Verbose `
@@ -84,9 +83,8 @@ function Restart-AzFirewall {
             + $ExistingPublicIpAddressName)
 		}
 
-		$ExistingPublicIpAddressResourceGroupName = (Get-AzResource -ResourceId (((Get-AzFirewall `
-			-Name $Name `
-			-ResourceGroupName $ResourceGroupName).IpConfigurations).PublicIpAddress).Id).ResourceGroupName
+		$ExistingPublicIpAddressResourceGroupName = (Get-AzResource `
+      -ResourceId $AzFirewall.IpConfigurations.PublicIpAddress.Id).ResourceGroupName
 
 		if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
 				Write-Verbose `
@@ -96,10 +94,9 @@ function Restart-AzFirewall {
 		}
 
 		$ExistingVirtualNetworkName = (Get-AzResource `
-			-Name $(((Get-AzResource -ResourceId (((Get-AzFirewall `
-				-Name $Name `
-				-ResourceGroupName $ResourceGroupName).IpConfigurations).Subnet).Id)).ParentResource -replace '.*/','') `
-			-ResourceType 'Microsoft.Network/virtualNetworks').Name
+      -Name $((Get-AzResource `
+        -ResourceId $AzFirewall.IpConfigurations.Subnet.Id).ParentResource -replace '.*/','') `
+      -ResourceType 'Microsoft.Network/virtualNetworks').Name
 
 		if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
 				Write-Verbose `
@@ -109,10 +106,9 @@ function Restart-AzFirewall {
 		}
 
 		$ExistingVirtualNetworkResourceGroupName = (Get-AzResource `
-			-Name $(((Get-AzResource -ResourceId (((Get-AzFirewall `
-				-Name $Name `
-				-ResourceGroupName $ResourceGroupName).IpConfigurations).Subnet).Id)).ParentResource -replace '.*/','') `
-			-ResourceType 'Microsoft.Network/virtualNetworks').ResourceGroupName
+      -Name $((Get-AzResource `
+        -ResourceId $AzFirewall.IpConfigurations.Subnet.Id).ParentResource -replace '.*/','') `
+      -ResourceType 'Microsoft.Network/virtualNetworks').ResourceGroupName
 
 		if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
 				Write-Verbose `
