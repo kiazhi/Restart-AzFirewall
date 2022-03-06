@@ -1,9 +1,9 @@
 <#
  .Synopsis
-  Restarts an Azure Firewall.
+  Restart an Azure Firewall.
 
  .Description
-  Restarts an Azure Firewall. This function retains the existing Azure Firewall
+  Restart an Azure Firewall. This function retains the existing Azure Firewall
   configurations prior to deallocating the resource to stop the Azure Firewall
   and reallocating the resource with those previously retained Azure Firewall
   configurations to start the Azure Firewall.
@@ -12,10 +12,10 @@
   Specifies the name of the Azure Firewall that this cmdlet will restarts.
 
  .Parameter ResourceGroupName
-  Specifies the name of a resource group to contain the Firewall.
+  Specifies the name of a resource group containing the Azure Firewall.
 
  .Parameter Wait
-  Specifies the number of seconds to wait before starting the Firewall.
+  Specifies the number of seconds to wait before starting the Azure Firewall.
 
  .Example
   # Restart the Azure Firewall.
