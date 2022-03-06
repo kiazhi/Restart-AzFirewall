@@ -38,7 +38,6 @@ A simple PowerShell cmdlet module to reboot Azure Firewall (PaaS).
 3. Use `Get-Help` to know the command
 
 	```powershell
-	# Use Get-Help to get help on the Restart-Firewall cmdlet
-
+	# Use Get-Help to get help on the Restart-AzFirewall cmdlet
 	Get-Help Restart-AzFirewall -Full
 	```
