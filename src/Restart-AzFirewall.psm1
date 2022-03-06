@@ -71,7 +71,7 @@ function Restart-AzFirewall {
 		if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
 				Write-Verbose `
 					-Message $("$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzzz') - " `
-						+ "Existing AzFirewall Public Ip Address Name:" `
+						+ "Get existing AzFirewall Public Ip Address Name:" `
             + $ExistingPublicIpAddressName)
 		}
 
@@ -82,7 +82,7 @@ function Restart-AzFirewall {
 		if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
 				Write-Verbose `
 					-Message $("$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzzz') - " `
-						+ "Existing AzFirewall Public Ip Address Resource Group Name:" `
+						+ "Get existing AzFirewall Public Ip Address Resource Group Name:" `
             + $ExistingPublicIpAddressResourceGroupName)
 		}
 
@@ -95,7 +95,7 @@ function Restart-AzFirewall {
 		if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
 				Write-Verbose `
 					-Message $("$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzzz') - " `
-						+ "Existing AzFirewall Virtual Network Name:" `
+						+ "Get existing AzFirewall Virtual Network Name:" `
             + $ExistingVirtualNetworkName)
 		}
 
@@ -108,7 +108,7 @@ function Restart-AzFirewall {
 		if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
 				Write-Verbose `
 					-Message $("$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzzz') - " `
-						+ "Existing AzFirewall Virtual Network Resource Group Name:"`
+						+ "Get existing AzFirewall Virtual Network Resource Group Name:"`
             + $ExistingVirtualNetworkResourceGroupName)
 		}
 
