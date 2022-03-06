@@ -73,6 +73,16 @@ function Restart-AzFirewall {
 			-Name $Name `
 			-ResourceGroupName $ResourceGroupName
 
+    if($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
+			Write-Verbose `
+				-Message $("$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzzz') - " `
+					+ "Get existing AzFirewall configurations:")
+
+			Write-Output `
+				-InputObject $AzFirewall
+
+		}
+
 		$ExistingPublicIpAddressName = (Get-AzResource `
       -ResourceId $AzFirewall.IpConfigurations.PublicIpAddress.Id).Name
 
